@@ -42,7 +42,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('login') }}">
-                                    Sign in using password
+                                    Sign in using password instead
                                 </a>
                             </div>
                         </div>

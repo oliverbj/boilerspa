@@ -60,7 +60,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication Links -->
                             @guest
-                            <li><a href="{{ route('login') }}">Login <i class="fa fa-sign-in"></i></a></li>
+                            <li><a href="{{ url('/login/magic') }}">Login <i class="fa fa-sign-in"></i></a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                             @else
                             <li class="dropdown">
