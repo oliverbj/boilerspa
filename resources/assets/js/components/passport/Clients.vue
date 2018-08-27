@@ -213,11 +213,13 @@
         data() {
             return {
                 clients: [],
+
                 createForm: {
                     errors: [],
                     name: '',
                     redirect: ''
                 },
+
                 editForm: {
                     errors: [],
                     name: '',
@@ -227,18 +229,21 @@
                 editClientModal: false
             };
         },
+
         /**
          * Prepare the component (Vue 1.x).
          */
         ready() {
             this.prepareComponent();
         },
+
         /**
          * Prepare the component (Vue 2.x).
          */
         mounted() {
             this.prepareComponent();
         },
+
         methods: {
             /**
              * Prepare the component.
@@ -246,6 +251,7 @@
             prepareComponent() {
                 this.getClients();
             },
+
             /**
              * Get all of the OAuth clients for the user.
              */
@@ -255,12 +261,14 @@
                         this.clients = response.data;
                     });
             },
+
             /**
              * Show the form for creating new clients.
              */
             showCreateClientForm() {
                 this.clientModal = true
             },
+
             /**
              * Create a new OAuth client for the user.
              */
@@ -270,6 +278,7 @@
                     this.createForm, '#modal-create-client'
                 );
             },
+
             /**
              * Edit the given client.
              */
@@ -277,8 +286,10 @@
                 this.editForm.id = client.id;
                 this.editForm.name = client.name;
                 this.editForm.redirect = client.redirect;
+
                 this.closeEditClientModal()
             },
+
             /**
              * Update the client being edited.
              */
@@ -288,17 +299,21 @@
                     this.editForm, '#modal-edit-client'
                 );
             },
+
             /**
              * Persist the client to storage using the given form.
              */
             persistClient(method, uri, form, modal) {
                 form.errors = [];
+
                 axios[method](uri, form)
                     .then(response => {
                         this.getClients();
+
                         form.name = '';
                         form.redirect = '';
                         form.errors = [];
+
                         this.closeClientModal()
                         this.closeEditClientModal()
                     })
@@ -310,6 +325,7 @@
                         }
                     });
             },
+
             /**
              * Destroy the given client.
              */
@@ -319,9 +335,11 @@
                         this.getClients();
                     });
             },
+
             closeClientModal() {
                 this.clientModal = false
             },
+
             closeEditClientModal() {
                 this.editClientModal = false
             }

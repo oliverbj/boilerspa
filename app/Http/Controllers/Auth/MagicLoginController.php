@@ -6,7 +6,7 @@ use Auth;
 use App\Auth\MagicAuthentication;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\UserLoginToken;
+use App\Models\UserLoginToken;
 
 class MagicLoginController extends Controller
 {
