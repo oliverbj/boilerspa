@@ -20,8 +20,6 @@ import router from './router';
 import store from './store';
 import MenuSidebar from './components/MenuSidebar.vue';
 import ActivitySidebar from './components/ActivitySidebar.vue';
-import vSelect from 'vue-select';
-import Datepicker from 'vue-bootstrap-datetimepicker';
 
 //PASSPORT API
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
@@ -29,12 +27,6 @@ Vue.component('passport-authorized-clients', require('./components/passport/Auth
 Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
-Vue.component('registration-form', require('./components/Auth/Register.vue'));
-Vue.component('back-button', require('./components/BackButton.vue'));
-Vue.component('paginator', require('./components/Paginator.vue'));
-Vue.component('vSelect', vSelect);
-Vue.component('date-picker', Datepicker);
-Vue.component('v-toggle', require('./components/vToggle.vue'));
 
 // Global Event Bus
 window.Events = new Vue();
@@ -42,11 +34,6 @@ window.Events = new Vue();
 // Add the router to every vue instance.
 Vue.prototype.router = router;
 
-Vue.prototype.goBack = () => {
-    router.go(-1);
-};
-
-Vue.prototype.isAdmin = window.App.user ? window.App.user.is_admin : false;
 
 import {
     Alert
