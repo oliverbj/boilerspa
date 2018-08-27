@@ -15,6 +15,10 @@ Route::redirect('/', '/home');
 
 Auth::routes();
 
+Route::get('/login/magic', 'Auth\MagicLoginController@show');
+Route::post('/login/magic', 'Auth\MagicLoginController@sendToken');
+Route::get('/login/magic/{token}', 'Auth\MagicLoginController@validateToken');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('businesses', 'BusinessesController@store')->name('businesses.store');
@@ -54,13 +58,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/desk-close', 'DeskClosesController@store');
 
     Route::get('/accounting/data', 'AccountingDataController');
-
-    Route::middleware(['must-be-admin'])->group(function () {
-        Route::get('/users', 'UsersController@index');
-        Route::post('/users', 'UsersController@store');
-
-        Route::get('/graphs/incomes', 'GraphsController@income');
-    });
 });
 
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');

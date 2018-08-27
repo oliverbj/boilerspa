@@ -90,6 +90,16 @@
         
         @yield('content')
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md8 col-md-offset-2">
+
+                @include('layouts.partials._notifications')
+
+            </div>
+        </div>
+    </div>
     
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

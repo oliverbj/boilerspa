@@ -23,6 +23,10 @@ import ActivitySidebar from './components/ActivitySidebar.vue';
 import vSelect from 'vue-select';
 import Datepicker from 'vue-bootstrap-datetimepicker';
 
+//PASSPORT API
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
 Vue.component('registration-form', require('./components/Auth/Register.vue'));
@@ -43,8 +47,10 @@ Vue.prototype.goBack = () => {
 };
 
 Vue.prototype.isAdmin = window.App.user ? window.App.user.is_admin : false;
-    
-import {Alert} from './utilities';
+
+import {
+    Alert
+} from './utilities';
 Vue.prototype.Alert = Alert;
 
 const app = new Vue({
@@ -52,7 +58,10 @@ const app = new Vue({
         this.$store.commit('setUser', window.App.user);
     },
     el: '#app',
-    components: {MenuSidebar, ActivitySidebar},
+    components: {
+        MenuSidebar,
+        ActivitySidebar
+    },
     router,
     store: store
 });

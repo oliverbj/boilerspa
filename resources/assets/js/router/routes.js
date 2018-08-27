@@ -1,6 +1,4 @@
-
-const routes = [
-    {
+const routes = [{
         path: '/',
         redirect: '/dashboard'
     },
