@@ -16,6 +16,10 @@ Go change the settings in .env to match your environment.
 
 `php artisan migrate`
 
+# Passport
+
+If you wish, you can also include Laravel Passport in your app. Simply follow the official instruction on how to install this.
+
 `npm install`
 
 And you're done.
