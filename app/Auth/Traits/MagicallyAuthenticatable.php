@@ -2,7 +2,7 @@
 
 namespace App\Auth\Traits;
 
-use App\UserLoginToken;
+use App\Models\UserLoginToken;
 use Mail;
 use App\Mail\MagicLoginRequested;
 

@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\UserLoginToken;
+use App\Models\UserLoginToken;
 
 class ClearExpiredUserLoginTokens extends Command
 {
