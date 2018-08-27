@@ -1,14 +1,10 @@
 require('./bootstrap');
-require('bootstrap-toggle/js/bootstrap-toggle.min.js');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
-import Vuelidate from 'vuelidate';
 import Chart from 'chart.js';
 
 window.Chart = Chart;
-
-Vue.use(Vuelidate)
 
 Vue.use(Vuex);
 
@@ -19,7 +15,6 @@ window.accounting = require('accounting');
 import router from './router';
 import store from './store';
 import MenuSidebar from './components/MenuSidebar.vue';
-import ActivitySidebar from './components/ActivitySidebar.vue';
 
 //PASSPORT API
 Vue.component('passport-clients', require('./components/passport/Clients.vue'));
@@ -47,7 +42,6 @@ const app = new Vue({
     el: '#app',
     components: {
         MenuSidebar,
-        ActivitySidebar
     },
     router,
     store: store

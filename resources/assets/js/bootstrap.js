@@ -1,15 +1,11 @@
-
 window._ = require('lodash');
-
-try {
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap-sass');
-} catch (e) {}
+import ElementUI from 'element-ui';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
 Vue.use(VueRouter);
+Vue.use(ElementUI, 'en');
 
 window.axios = require('axios');
 

@@ -15,10 +15,10 @@ class UserRegistrationTest extends TestCase
         $business = $this->registerFirstUser();
 
         $this->assertDatabaseHas('users', [
-            'name'        => 'John Doe',
-            'email'       => 'john@example.com',
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
             'business_id' => $business['id'],
-            ]);
+        ]);
     }
 
     /** @test **/
@@ -27,7 +27,7 @@ class UserRegistrationTest extends TestCase
         $this->registerFirstUser();
 
         $this->assertDatabaseHas('users', [
-            'email'    => 'john@example.com',
+            'email' => 'john@example.com',
             'is_admin' => true,
         ]);
     }
@@ -35,17 +35,17 @@ class UserRegistrationTest extends TestCase
     protected function registerFirstUser()
     {
         $business = $this->postJson(route('businesses.store'), [
-            'name'        => 'Test Business',
+            'name' => 'Test Business',
             'description' => 'A business dedicated to being used for testing.',
-            ])->json()['business'];
+        ])->json()['business'];
 
         $this->post(route('register'), [
-            'name'                  => 'John Doe',
-            'email'                 => 'john@example.com',
-            'password'              => 'secret',
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => 'secret',
             'password_confirmation' => 'secret',
-            'business_id'           => $business['id'],
-            ])->assertRedirect('/home');
+            'business_id' => $business['id'],
+        ])->assertRedirect('/home/dashboard');
 
         return $business;
     }
