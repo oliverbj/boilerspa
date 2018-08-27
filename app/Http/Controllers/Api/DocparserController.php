@@ -13,22 +13,14 @@ class DocparserController extends Controller
     {
         $document = new Document();
 
-        //We use the merge() function to add "custom" field names to our $request.
-        //This is needed, since Docparser will ex. add _formatted to their fields.
-        /*
-        $request->merge([
-            'vgm_cutoff_date' => $request->input('vgm_cutoff_date_formatted'),
-            'shipment_reference' => $request->input('shipment_reference_0'),
-            'booking_reference' => $request->input('booking_reference_0')
-        ]);
-        */
-
-        //Add all our received data to our Document::
-//        $document->fill($request->all());
         $document->creator()->associate(auth()->user());
 
         foreach ($request->all() as $key => $value) {
-            $newKey = preg_replace("/(_?\d+)+$/", '', $key); //this generates the name of column that you need
+            //Important: this will remove the _{formatted|numbers} at the end of the JSON object.
+            //Examples:
+            //vgm_cutoff_date_formatted   => vgm_cutoff_date
+            //shipment_reference_01       => shipment_reference
+            $newKey = preg_replace('/(_["formatted"0-9]+)$/', '', $key);
             $document->$newKey = $value;
         }
 
