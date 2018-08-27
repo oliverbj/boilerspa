@@ -2,17 +2,21 @@
     .action-link {
         cursor: pointer;
     }
+
+    .m-b-none {
+        margin-bottom: 0;
+    }
 </style>
 
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="card card-default">
-                <div class="card-header">Authorized Applications</div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Authorized Applications</div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     <!-- Authorized Tokens -->
-                    <table class="table table-borderless mb-0">
+                    <table class="table table-borderless m-b-none">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -51,6 +55,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         /*
          * The component's data.
@@ -60,21 +65,18 @@
                 tokens: []
             };
         },
-
         /**
          * Prepare the component (Vue 1.x).
          */
         ready() {
             this.prepareComponent();
         },
-
         /**
          * Prepare the component (Vue 2.x).
          */
         mounted() {
             this.prepareComponent();
         },
-
         methods: {
             /**
              * Prepare the component (Vue 2.x).
@@ -82,25 +84,23 @@
             prepareComponent() {
                 this.getTokens();
             },
-
             /**
              * Get all of the authorized tokens for the user.
              */
             getTokens() {
                 axios.get('/oauth/tokens')
-                        .then(response => {
-                            this.tokens = response.data;
-                        });
+                    .then(response => {
+                        this.tokens = response.data;
+                    });
             },
-
             /**
              * Revoke the given token.
              */
             revoke(token) {
                 axios.delete('/oauth/tokens/' + token.id)
-                        .then(response => {
-                            this.getTokens();
-                        });
+                    .then(response => {
+                        this.getTokens();
+                    });
             }
         }
     }

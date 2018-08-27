@@ -12,25 +12,24 @@
 </template>
 
 <script>
-export default {
-}
+    export default {}
 </script>
 
 <style lang="scss" scoped>
-.panel {
-    border: none;
-}
-.panel-heading {
-    border: none;
-    * {
-        font-size: 2em;
-        font-weight: 700;
+    .panel {
+        border: none;
     }
-}
-.panel-body {
-    border: none;
-    background-color: #fafafa;
-}
+
+    .panel-heading {
+        border: none;
+        * {
+            font-size: 2em;
+            font-weight: 700;
+        }
+    }
+
+    .panel-body {
+        border: none;
+        background-color: #fafafa;
+    }
 </style>
-
-
