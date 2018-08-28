@@ -45,7 +45,7 @@ In the _Additional Headers_, you must set the **Personal Access Token**, which y
 **Your application:**
 You must create a controller to catch your webhook. This can be done by using below template:
 
-`$ php artisan make:controller ControllerName
+`$ php artisan make:controller ControllerName`
 
 ```
 public function webhook(Request $request)
