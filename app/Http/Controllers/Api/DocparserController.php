@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Document;
+use App\Models\BookingConfirmations;
+use Spatie\Activitylog\Models\Activity;
+use function GuzzleHttp\json_encode;
 
 class DocparserController extends Controller
 {
@@ -11,7 +13,7 @@ class DocparserController extends Controller
     //sent from Docparser.
     public function webhook(Request $request)
     {
-        $document = new Document();
+        $document = new BookingConfirmations();
 
         $document->creator()->associate(auth()->user());
 
@@ -29,6 +31,10 @@ class DocparserController extends Controller
             ['booking_reference' => $document->booking_reference],
             $document->getAttributes()
         );
+
+        $activity = Activity::all()->last();
+        echo json_encode($activity);
+        die();
 
         return response()->json('OK');
     }
